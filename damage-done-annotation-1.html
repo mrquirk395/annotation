@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Stylistic Device Highlighter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      max-width: 900px;
+      line-height: 1.4;
+    }
+    p {
+      margin: 0.6em 0;
+    }
+    .highlight {
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .hidden {
+      font-weight: normal;
+      background-color: transparent !important;
+    }
+
+    /* Highlight colours */
+    .imagery     { background-color: lightblue; }
+    .syntax      { background-color: lightcoral; }
+    .tone        { background-color: lightgreen; }
+    .diction     { background-color: lightpink; }
+    .foreshadowing { background-color: khaki; }
+    .figurative  { background-color: plum; }
+
+    /* Tooltip styling */
+    .tooltip {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .tooltip::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 120%;
+      left: 0;
+      background-color: #333;
+      color: #fff;
+      padding: 5px 8px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+    }
+
+    .tooltip:hover::after {
+      opacity: 1;
+    }
+
+    .button-container {
+      margin-top: 25px;
+      margin-bottom: 20px;
+    }
+
+    .button-imagery { background-color: lightblue; }
+    .button-syntax { background-color: lightcoral; }
+    .button-tone { background-color: lightgreen; }
+    .button-diction { background-color: lightpink; }
+    .button-foreshadowing { background-color: khaki; }
+    .button-figurative { background-color: plum; }
+
+    button {
+      margin: 5px 8px 5px 0;
+      padding: 5px 10px;
+      font-size: 0.95em;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .definitions {
+      border-top: 1px solid #ccc;
+      padding-top: 15px;
+      margin-top: 30px;
+    }
+    .definitions h4 {
+      margin-bottom: 10px;
+    }
+    .definitions p {
+      margin: 4px 0;
+    }
+    .term {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h3>Warren Fellows’ Arrest (Chapter 4)</h3>
+  <p><strong>9.00 a.m., Wednesday, 11 October 1978.</strong></p>
+
+  <p>
+    MAJOR VYRAJ ANNOUNCES himself as an immigration official, and for a moment I relax. 
+    My body is <span class="imagery hidden tooltip" data-tooltip="Imagery: Language that appeals to the senses.">stunned back into a state of panic by a crunch to my stomach from his walkie-talkie</span>. 
+    I collapse on the floor and know that <span class="tone hidden tooltip" data-tooltip="Tone: Shows emotional turmoil and a sense of powerlessness.">my life and the world it lives in is suddenly, horribly out of my control</span>. 
+    Thai policemen carrying guns are <span class="imagery hidden tooltip" data-tooltip="Imagery: Visual description of chaotic movement.">tearing the room apart</span>, <span class="diction hidden tooltip" data-tooltip="Vocabulary: 'Babbling' suggests confusion and overwhelming sound.">babbling</span> things I cannot understand. 
+    <span class="syntax hidden tooltip" data-tooltip="Sentence Construction: Short, sequential actions to build pace and urgency.">There is shouting from somewhere else in the hotel</span> and I am <span class="syntax hidden tooltip" data-tooltip="Sentence Construction: Long sentence structure mimics rapid unfolding of events.">dragged by both arms out into the hallway and down to Paul’s room</span>. 
+    He is <span class="imagery hidden tooltip" data-tooltip="Imagery: Tactile and visual detail enhances fear.">being pressed against the wall with guns at his head</span> while other policemen are <span class="tone hidden tooltip" data-tooltip="Tone: Builds helpless atmosphere.">standing over the red suitcase</span>. 
+    They <span class="diction hidden tooltip" data-tooltip="Vocabulary: 'Urgently chorus' conveys panic and insistence.">urgently chorus</span> something toward Vyraj and he <span class="imagery hidden tooltip" data-tooltip="Imagery: Sensory image of pain and violence.">squeezes my face till I feel my cheekbones will break</span>. 
+    ‘This suitcase has a coded lock . . . tell me the number!’ I tell him the number is two-six-five and another policeman opens the lock. 
+    <span class="tone hidden tooltip" data-tooltip="Tone: Overwhelming panic.">Insane with fear</span>, I <span class="figurative hidden tooltip" data-tooltip="Figurative: Hyperbolic expression of desperation.">stupidly cling to the hope</span> that they will close the case without looking under the <span class="imagery hidden tooltip" data-tooltip="Imagery: Visual detail creates tension.">flimsy blue towel</span> that covers the 24 bags of grade-4 heroin. 
+    There is a <span class="tone hidden tooltip" data-tooltip="Tone: 'Grotesque silence' signals horror and disbelief.">grotesque silence</span> in the room as the towel is removed. 
+    <span class="tone hidden tooltip" data-tooltip="Tone: Emphasises extreme fear and emotional shutdown.">I want to cry but my body is so terrified it cannot manage even so simple a task</span>. 
+    <span class="figurative hidden tooltip" data-tooltip="Figurative: Hyperbole suggesting the emotional weight of the moment.">I know I am dying</span>. 
+    <span class="foreshadowing hidden tooltip" data-tooltip="Foreshadowing: Signals the devastating consequences to come.">Vyraj is in a state of ecstatic rage</span>.
+  </p>
+
+  <div class="button-container">
+    <button class="button-imagery" onclick="toggleHighlight('imagery')">Imagery (Sensory)</button>
+    <button class="button-syntax" onclick="toggleHighlight('syntax')">Sentence Construction</button>
+    <button class="button-tone" onclick="toggleHighlight('tone')">Tone & mood</button>
+    <button class="button-diction" onclick="toggleHighlight('diction')">Vocabulary</button>
+    <button class="button-foreshadowing" onclick="toggleHighlight('foreshadowing')">Foreshadowing</button>
+    <button class="button-figurative" onclick="toggleHighlight('figurative')">Figurative language</button>
+  </div>
+
+  <div class="definitions">
+    <h4>Technique Definitions</h4>
+    <p><span class="term">Imagery (Sensory):</span> Words that create strong visual or sensory experiences for the reader (e.g., touch, sight, sound).</p>
+    <p><span class="term">Sentence Construction:</span> The way a sentence is structured to affect meaning, emphasis, and pacing.</p>
+    <p><span class="term">Tone & Mood:</span> The author’s attitude (tone) and the feeling created in the reader (mood), such as fear or hopelessness.</p>
+    <p><span class="term">Vocabulary:</span> The author’s word choices — strong or specific words that shape meaning or emotion.</p>
+    <p><span class="term">Foreshadowing:</span> Hints or clues about what is going to happen later in the text.</p>
+    <p><span class="term">Figurative Language:</span> Non-literal language like metaphors, similes, hyperbole, or oxymorons used for effect.</p>
+  </div>
+
+  <script>
+    function toggleHighlight(type) {
+      const elements = document.querySelectorAll('.' + type);
+      elements.forEach(el => {
+        el.classList.toggle('highlight');
+        el.classList.toggle('hidden');
+      });
+    }
+  </script>
+
+</body>
+</html>
